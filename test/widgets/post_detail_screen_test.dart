@@ -56,17 +56,52 @@ void main() {
     });
 
     testWidgets('Navigates to other posts on tap', (tester) async {
+      // Setup mock repository to return some posts
+      when(() => mockRepo.getPosts(any())).thenAnswer(
+        (_) async => Right([
+          PostEntity(id: 2, title: 'Related Post', body: 'Related Content'),
+        ]),
+      );
+
+      // Add mock for pushNamed
+      when(
+        () => mockRouter.pushNamed(
+          any(),
+          pathParameters: any(named: 'pathParameters'),
+          queryParameters: any(named: 'queryParameters'),
+          extra: any(named: 'extra'),
+        ),
+      ).thenAnswer((_) async => null);
+
       await tester.pumpWidget(
         MaterialApp(
-          home: PostDetailScreen(
-            post: PostEntity(id: 1, title: 'Test', body: 'Content'),
-            repository: mockRepo,
+          home: InheritedGoRouter(
+            goRouter: mockRouter,
+            child: PostDetailScreen(
+              post: PostEntity(id: 1, title: 'Test', body: 'Content'),
+              repository: mockRepo,
+            ),
           ),
         ),
       );
 
+      // Wait for the related posts to load
+      await tester.pump();
+      await tester.pumpAndSettle();
+
+      // Now we can tap the ListTile
       await tester.tap(find.byType(ListTile).first);
-      // Verify navigation occurred
+      await tester.pumpAndSettle();
+
+      // Verify pushNamed was called instead of go
+      verify(
+        () => mockRouter.pushNamed(
+          any(),
+          pathParameters: any(named: 'pathParameters'),
+          queryParameters: any(named: 'queryParameters'),
+          extra: any(named: 'extra'),
+        ),
+      ).called(1);
     });
   });
 }
