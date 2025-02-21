@@ -15,12 +15,13 @@ import 'package:postfetcher/core/constants/app_constants.dart';
 class PostRepositoryImpl implements PostRepository {
   final PostRemoteDataSource remoteDataSource;
   final Connectivity connectivity;
-  final Box<PostModel> _postsBox = Hive.box('posts_cache');
+  final Box<PostModel> box;
 
   PostRepositoryImpl({
     required this.remoteDataSource,
     required this.connectivity,
-  });
+    Box<PostModel>? box,
+  }) : box = box ?? Hive.box('posts_cache');
 
   @override
   Future<Either<Failure, List<PostEntity>>> getPosts(int page) async {
@@ -50,7 +51,7 @@ class PostRepositoryImpl implements PostRepository {
   Future<Either<Failure, List<PostEntity>>> getCachedPosts() async {
     try {
       final posts =
-          _postsBox.values
+          box.values
               .map(
                 (post) =>
                     PostEntity(id: post.id, title: post.title, body: post.body),
@@ -67,12 +68,9 @@ class PostRepositoryImpl implements PostRepository {
   }
 
   Future<void> _cachePosts(List<PostEntity> posts, int page) async {
-    if (page == 1) {
-      await _postsBox.clear(); // Clear old cache on first page
-    }
-
+    if (page == 1) await box.clear();
     for (var post in posts) {
-      await _postsBox.put(
+      await box.put(
         post.id,
         PostModel(id: post.id, title: post.title, body: post.body),
       );

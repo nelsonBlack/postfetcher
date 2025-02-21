@@ -21,29 +21,50 @@ class SettingsScreen extends StatelessWidget {
       padding: const EdgeInsets.all(24),
       children: [
         ListTile(
-          title: Text('Theme Mode', style: theme.textTheme.titleMedium),
+          title: Text(
+            'Theme Mode',
+            style: theme.textTheme.titleMedium?.copyWith(
+              color: theme.colorScheme.onSurface,
+            ),
+          ),
           trailing: FxBuilder<AppController>(
             controller: appController,
             builder:
-                (controller) => DropdownButton<ThemeMode>(
-                  value: controller.themeMode,
-                  items: const [
-                    DropdownMenuItem(
-                      value: ThemeMode.system,
-                      child: Text('System'),
-                    ),
-                    DropdownMenuItem(
-                      value: ThemeMode.light,
-                      child: Text('Light'),
-                    ),
-                    DropdownMenuItem(
-                      value: ThemeMode.dark,
-                      child: Text('Dark'),
-                    ),
-                  ],
-                  onChanged: (mode) {
-                    if (mode != null) controller.toggleTheme(mode);
-                  },
+                (controller) => Theme(
+                  data: Theme.of(
+                    controller.context,
+                  ).copyWith(canvasColor: theme.colorScheme.surface),
+                  child: DropdownButton<ThemeMode>(
+                    value: controller.themeMode,
+                    dropdownColor: theme.colorScheme.surface,
+                    style: TextStyle(color: theme.colorScheme.onSurface),
+                    items: [
+                      DropdownMenuItem(
+                        value: ThemeMode.system,
+                        child: Text(
+                          'System',
+                          style: TextStyle(color: theme.colorScheme.onSurface),
+                        ),
+                      ),
+                      DropdownMenuItem(
+                        value: ThemeMode.light,
+                        child: Text(
+                          'Light',
+                          style: TextStyle(color: theme.colorScheme.onSurface),
+                        ),
+                      ),
+                      DropdownMenuItem(
+                        value: ThemeMode.dark,
+                        child: Text(
+                          'Dark',
+                          style: TextStyle(color: theme.colorScheme.onSurface),
+                        ),
+                      ),
+                    ],
+                    onChanged: (mode) {
+                      if (mode != null) controller.toggleTheme(mode);
+                    },
+                  ),
                 ),
           ),
         ),

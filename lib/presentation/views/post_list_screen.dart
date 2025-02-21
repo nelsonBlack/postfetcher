@@ -56,10 +56,6 @@ class _PostListScreenState extends State<PostListScreen> {
     }
   }
 
-  void _handleNavigation(int index, BuildContext context) {
-    // Handle navigation logic based on the selected index
-  }
-
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
