@@ -6,8 +6,7 @@
 A production-grade Flutter application demonstrating modern development practices with Clean Architecture, offline-first approach, and comprehensive testing.
 
 <img src="https://via.placeholder.com/400x800?text=App+Screenshot+1" width="200"> <img src="https://via.placeholder.com/400x800?text=App+Screenshot+2" width="200">
-![image](https://github.com/user-attachments/assets/2f881c78-0094-44e9-8c18-df0a48ba55f0)
-
+<img src="https://github.com/user-attachments/assets/2f881c78-0094-44e9-8c18-df0a48ba55f0" width="200">
 ## Features ✨
 
 | Feature             | Implementation Details                                                 |
