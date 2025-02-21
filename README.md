@@ -3,7 +3,7 @@
 [![CI/CD](https://github.com/yourusername/postfetcher/actions/workflows/flutter.yml/badge.svg)](https://github.com/yourusername/postfetcher/actions)
 [![Test Coverage](https://img.shields.io/badge/coverage-90%25-brightgreen)](https://github.com/yourusername/postfetcher)
 
-A production-grade Flutter application demonstrating modern development practices with Clean Architecture, offline-first approach, and comprehensive testing.
+A production-grade Flutter application demonstrating modern development practices with Clean Architecture, offline-first approach, and comprehensive testing with light and dark theme.
 
 
 <img src="https://github.com/user-attachments/assets/2f881c78-0094-44e9-8c18-df0a48ba55f0" width="400">
