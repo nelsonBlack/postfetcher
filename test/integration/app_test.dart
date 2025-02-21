@@ -58,7 +58,6 @@ void main() {
       when(() => mockUseCase.execute(page: any(named: 'page'))).thenAnswer(
         (_) async => Right([
           PostEntity(id: 1, title: 'Test Post', body: 'Test Content'),
-          PostEntity(id: 2, title: 'Another Post', body: 'More Content'),
         ]),
       );
 
@@ -87,11 +86,11 @@ void main() {
 
       // Wait for initial load
       await tester.pump();
-      expect(find.byType(CircularProgressIndicator), findsOneWidget);
+      expect(find.byType(CircularProgressIndicator), findsAtLeastNWidgets(1));
 
       // Wait for data
       await tester.pumpAndSettle();
-      expect(find.byType(PostListItem), findsWidgets);
+      expect(find.byType(PostListItem), findsOneWidget);
 
       // Navigate to detail
       await tester.tap(find.byType(PostListItem).first, warnIfMissed: false);

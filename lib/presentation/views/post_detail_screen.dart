@@ -95,7 +95,9 @@ class PostDetailScreen extends StatelessWidget {
                             otherPost.title,
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
-                            style: theme.textTheme.titleMedium,
+                            style: theme.textTheme.titleMedium?.copyWith(
+                              color: theme.colorScheme.onSurface,
+                            ),
                           ),
                           trailing: Icon(
                             Icons.arrow_forward_ios,
