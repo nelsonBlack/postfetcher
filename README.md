@@ -3,9 +3,18 @@
 [![CI/CD](https://github.com/yourusername/postfetcher/actions/workflows/flutter.yml/badge.svg)](https://github.com/yourusername/postfetcher/actions)
 [![Test Coverage](https://img.shields.io/badge/coverage-90%25-brightgreen)](https://github.com/yourusername/postfetcher)
 
-A production-grade Flutter application demonstrating modern development practices with Clean Architecture, offline-first approach, and comprehensive testing.
+A production-grade Flutter application demonstrating modern development practices with Clean Architecture, offline-first approach, and comprehensive testing with light and dark theme.
 
-<img src="https://via.placeholder.com/400x800?text=App+Screenshot+1" width="200"> <img src="https://via.placeholder.com/400x800?text=App+Screenshot+2" width="200">
+
+<img src="https://github.com/user-attachments/assets/2f881c78-0094-44e9-8c18-df0a48ba55f0" width="400">
+<img src="https://github.com/user-attachments/assets/d1aa7b0b-f780-4028-a7ce-dda7d81b2e2d" width="400">
+
+
+## Web  To view web version go to https://food4education.nelsonbwogora.dev/home
+
+<img width="2008" alt="image" src="https://github.com/user-attachments/assets/d7ecda95-81a3-4898-8277-5c0fcf6a8d88" />
+
+
 
 ## Features ✨
 
